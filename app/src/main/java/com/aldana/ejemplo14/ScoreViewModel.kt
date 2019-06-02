@@ -1,4 +1,4 @@
-package com.aldana.ejemplo14.ViewModel
+package com.aldana.ejemplo14
 
 import androidx.lifecycle.ViewModel
 

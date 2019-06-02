@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.aldana.ejemplo14.R
-import com.aldana.ejemplo14.ViewModel.ScoreViewModel
+import com.aldana.ejemplo14.ScoreViewModel
 import com.aldana.ejemplo14.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 

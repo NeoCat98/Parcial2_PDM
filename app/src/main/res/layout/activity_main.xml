@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="team"
-                type="com.aldana.ejemplo14.ViewModel.ScoreViewModel"/>
+                type="com.aldana.ejemplo14.ScoreViewModel"/>
     </data>
     <ScrollView android:layout_width="match_parent"
                 android:layout_height="match_parent">
