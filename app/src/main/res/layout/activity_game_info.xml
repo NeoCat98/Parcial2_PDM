@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Activities.GameInfoActivity">
+    <LinearLayout android:layout_width="match_parent"
+                  android:gravity="center"
+                  android:layout_marginTop="@dimen/big_margin"
+                  android:layout_marginBottom="@dimen/big_margin"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+        <TextView android:layout_width="wrap_content"
+                  android:textSize="36sp"
+                  android:text="WINNER"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:textSize="30sp"
+                  android:id="@+id/winner_team"
+                  android:text="Name of the winner team"
+                  android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView android:layout_width="wrap_content"
+              android:textSize="20sp"
+              android:layout_gravity="center"
+              android:text="POINTS"
+              android:layout_height="wrap_content"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/small_gap">
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/medium_gap"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:id="@+id/tv_team_a_name"
+                    android:text="@string/text_team_a"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/medium_text" />
+
+            <TextView
+                    android:id="@+id/tv_final_score_team_a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_gap"
+                    android:gravity="center"
+                    android:text="1000"
+                    android:textSize="@dimen/big_text" />
+        </LinearLayout>
+
+        <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/medium_gap"
+                android:layout_marginTop="@dimen/medium_gap"
+                android:layout_marginRight="@dimen/medium_gap"
+                android:background="#D8D4D4" />
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/medium_gap"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_team_b_name"
+                    android:gravity="center"
+                    android:text="@string/text_team_b"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/medium_text" />
+
+            <TextView
+                    android:id="@+id/tv_final_score_team_b"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_gap"
+                    android:gravity="center"
+                    android:text="78"
+                    android:textSize="@dimen/big_text" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1"
+                  android:orientation="vertical"
+                  android:layout_margin="@dimen/text_margin"
+                  >
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="horizontal"
+                      android:gravity="center_horizontal"
+                      android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_margin="@dimen/text_margin"
+                      android:text="Date: "
+                      android:layout_height="wrap_content"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_margin="@dimen/text_margin"
+                      android:id="@+id/tv_date"
+                      android:text="30 June 2017"
+                      android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="horizontal"
+                      android:gravity="center_horizontal"
+                      android:layout_height="wrap_content">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_margin="@dimen/text_margin"
+                      android:text="Begin: "
+                      android:layout_height="wrap_content"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:id="@+id/tv_beginTime"
+                      android:layout_margin="@dimen/text_margin"
+                      android:text="13:50"
+                      android:layout_height="wrap_content"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_margin="@dimen/text_margin"
+                      android:text="End: "
+                      android:layout_height="wrap_content"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:id="@+id/tv_endTime"
+                      android:layout_margin="@dimen/text_margin"
+                      android:text="18:50"
+                      android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
