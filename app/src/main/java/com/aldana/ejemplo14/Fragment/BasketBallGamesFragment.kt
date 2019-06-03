@@ -1,6 +1,7 @@
 package com.aldana.ejemplo14.Fragment
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -25,14 +26,15 @@ class BasketBallGamesFragment : Fragment() {
             }
     }
     interface clickListener {
-        fun itemClick(game: Game)
+        fun itemPortraitClick(game: Game)
+        fun itemLandscapeClick(game: Game)
         fun delete(game: Game)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_basketballgame_list, container, false)
-        initRecyclerView(view)
+        initRecyclerView(resources.configuration.orientation,view)
         return view
     }
 
@@ -54,18 +56,28 @@ class BasketBallGamesFragment : Fragment() {
         this.gameAdapter.setBook(games)
     }
 
-    private fun initRecyclerView(container: View) {
-        gameAdapter =
-            MyBasketBallGamesRecyclerViewAdapter({ game: Game ->
-                listenerTool?.itemClick(
-                    game
-                )
-            },
-                { game: Game -> listenerTool?.delete(game) })
-        container.rv_games_list.apply {
-            setHasFixedSize(true)
-            layoutManager = GridLayoutManager(this.context, 1)
-            adapter = gameAdapter
+    private fun initRecyclerView(orientation: Int,container: View) {
+        if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            gameAdapter =
+                MyBasketBallGamesRecyclerViewAdapter(
+                    { game: Game -> listenerTool?.itemLandscapeClick(game)},
+                    { game: Game -> listenerTool?.delete(game)})
+            container.rv_games_list.apply {
+                setHasFixedSize(true)
+                layoutManager = GridLayoutManager(this.context, 1)
+                adapter = gameAdapter
+            }
+        }
+        if(orientation == Configuration.ORIENTATION_PORTRAIT){
+            gameAdapter =
+                MyBasketBallGamesRecyclerViewAdapter(
+                    { game: Game -> listenerTool?.itemPortraitClick(game)},
+                    { game: Game -> listenerTool?.delete(game)})
+            container.rv_games_list.apply {
+                setHasFixedSize(true)
+                layoutManager = GridLayoutManager(this.context, 2)
+                adapter = gameAdapter
+            }
         }
     }
 }

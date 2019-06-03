@@ -2,24 +2,32 @@ package com.aldana.ejemplo14.Activities
 
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
+import android.media.VolumeShaper
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.aldana.ejemplo14.Fragment.BasketBallGamesFragment
 import com.aldana.ejemplo14.Entities.Game
+import com.aldana.ejemplo14.Fragment.MainContentFragment
 import com.aldana.ejemplo14.R
 import com.aldana.ejemplo14.ViewModel.GameViewModel
 import kotlinx.android.synthetic.main.activity_game.*
 
 class ActivityGame : AppCompatActivity(), BasketBallGamesFragment.clickListener {
+
     private val addActivityRequestCode = 1
     lateinit var viewModel: GameViewModel
     private lateinit var fragment: BasketBallGamesFragment
+    private lateinit var fragmentContent: MainContentFragment
     private lateinit var games:List<Game>
 
-    override fun itemClick(game: Game) {
+    override fun itemPortraitClick(game: Game) {
         startActivity(
             Intent(this, GameInfoActivity::class.java)
                 .putExtra(AddActivity.EXTRA_DATE, game.date)
@@ -30,6 +38,11 @@ class ActivityGame : AppCompatActivity(), BasketBallGamesFragment.clickListener 
                 .putExtra(AddActivity.EXTRA_TIME_END, game.gameEnd)
                 .putExtra(AddActivity.EXTRA_TIME_BEGIN, game.gameStart)
         )
+    }
+
+    override fun itemLandscapeClick(game: Game) {
+        fragmentContent = MainContentFragment.newInstance(game)
+        changeFragment(R.id.fragment_info_content,fragmentContent)
     }
 
     override fun delete(game: Game) {
@@ -82,10 +95,20 @@ class ActivityGame : AppCompatActivity(), BasketBallGamesFragment.clickListener 
         }
     }
 
+    private fun changeFragment(id: Int, frag: Fragment){ supportFragmentManager.beginTransaction().replace(id, frag).commit() }
+
     private fun initFragment(){
         fragment = BasketBallGamesFragment.newInstance()
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.fragment_content, fragment).commit()
+        var localitation =
+        if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            fragmentContent = MainContentFragment.newInstance(Game("","",0,0,"","",""))
+            changeFragment(R.id.fragment_info_content, fragmentContent)
+
+            R.id.fragment_content_land
+        }
+        else{
+            R.id.fragment_content
+        }
+        changeFragment(localitation,fragment)
     }
 }

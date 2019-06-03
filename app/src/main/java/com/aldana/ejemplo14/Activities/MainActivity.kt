@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         }
         bt_save.setOnClickListener {
             val replyIntent = Intent()
-            var timeEnd = time_end.currentHour.toString()+":"+time_end.currentMinute.toString()
+            var timeEnd = time_end.currentHour.toString()+":"+time_end.currentMinute.toString()+ " "
             replyIntent.putExtra(AddActivity.EXTRA_DATE,date)
             replyIntent.putExtra(AddActivity.EXTRA_TIME_BEGIN, begin)
             replyIntent.putExtra(AddActivity.EXTRA_POINTSTEAMA, scoreViewModel.scoreTeamA)
